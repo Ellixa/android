@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">JP4application</string>
+    <string name="first_button">first</string>
+    <string translatable="false" name="login">Login</string>
+    <string name="register">Sign up</string>
+    <string name="hint_email">Insert your email</string>
+    <string name="hint_password">Insert your password</string>
+    <string name="login_error">Login failed</string>
+    <string name="login_success">Logged In succesfully</string>
+    <string name="password_error">La password è errata.</string>
+    <string name="email_error">L\'email è errata.</string>
+    <string name="hint_phone">Insert your phone number</string>
+    <string name="welcome">Welcome</string>
+
+</resources>
