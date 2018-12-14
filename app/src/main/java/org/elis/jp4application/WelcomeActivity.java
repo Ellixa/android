@@ -27,7 +27,7 @@ TextView welcomeTW;
 
         welcomeTW.setOnClickListener(this);
     }
-public void clicca(View view){
+public void scegliMail(View view){
     Intent i = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
             "mailto", getIntent().getStringExtra(MainActivity.WELCOME), null));
     startActivity(Intent.createChooser(i, "Choose an Email client : "));
@@ -35,9 +35,9 @@ public void clicca(View view){
 }
     public void onClick(View view){
         if (view.getId() == R.id.welcome_tv) {
-            clicca(this.welcomeTW);
-
+            scegliMail(this.welcomeTW);
         }
+
     }
 
 

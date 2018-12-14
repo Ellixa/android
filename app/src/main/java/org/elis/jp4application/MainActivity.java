@@ -1,6 +1,8 @@
 package org.elis.jp4application;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,6 +18,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final String TAG = "MainActivity";
     private static final int PASSWORD_LENGTH = 6;
+    SharedPreferences sharePref;
+    SharedPreferences.Editor editor;
 
     EditText emailET;
     EditText passwordET;
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         loginBtn.setOnClickListener(this);
         switchSW.setOnCheckedChangeListener(this);
 
+        sharePref= getPreferences(Context.MODE_PRIVATE);
+        editor= sharePref.edit();
+
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         Log.i(TAG, "activity created");
+        //onOff.setChecked(getColorValueFromMemory());
 
     }
 
@@ -129,6 +137,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Log.i(TAG, "activity DESTROYED");
 
     }
+    private void setColorValuesInMemory(boolean value){
+        editor.putBoolean ( "BGcolor", value);
+        editor.commit();
+
+    }
+    private boolean setColorValuesFromMemory(){
+        return sharePref.getBoolean("BGColor", false
+        );
+    }
 
     @Override
     public void onClick(View view) {
@@ -170,11 +187,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked){
+        background.setBackgroundColor(getResources().getColor(isChecked?R.color.background_dark:R.color.background_light));
+       /* if (isChecked){ **sostituisco _if_ con l'operatore ternario!!!**
             background.setBackgroundColor(getResources().getColor(R.color.background_dark));
         }
         else {
             background.setBackgroundColor(getResources().getColor(R.color.background_light));
-        }
+        } */
     }
 }
