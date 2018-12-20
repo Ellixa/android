@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         Log.i(TAG, "activity created");
-        //onOff.setChecked(getColorValueFromMemory());
+        switchSW.setChecked(getColorValuesFromMemory());
 
     }
 
@@ -142,9 +142,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editor.commit();
 
     }
-    private boolean setColorValuesFromMemory(){
-        return sharePref.getBoolean("BGColor", false
-        );
+    private boolean getColorValuesFromMemory(){
+        return sharePref.getBoolean("BGColor", false);
+
     }
 
     @Override
@@ -194,5 +194,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else {
             background.setBackgroundColor(getResources().getColor(R.color.background_light));
         } */
+    setColorValuesInMemory(isChecked);
     }
 }
